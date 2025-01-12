@@ -119,7 +119,10 @@ class MetronomeWidgetState extends State<MetronomeWidget> {
             onChanged: _adjustSpeed,
           ),
           ElevatedButton(
-            onPressed: _toggleMetronome,
+            onPressed: () {
+              print('Metronome Start/Stop button pressed');
+              _toggleMetronome();
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: _isPlaying ? Colors.red : Colors.green,
               minimumSize: Size(180, 70),

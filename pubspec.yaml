@@ -91,3 +91,4 @@ flutter:
 
   assets:
     - assets/sounds/metronome_click.wav
+    - assets/Scrambles.json
