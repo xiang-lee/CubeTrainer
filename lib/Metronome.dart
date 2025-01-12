@@ -3,11 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 class MetronomeWidget extends StatefulWidget {
+  final GlobalKey<MetronomeWidgetState> key;
+
+  MetronomeWidget({required this.key}) : super(key: key);
+
+  void stopMetronomeExternally() {
+    key.currentState?.stopMetronomeExternally();
+  }
+
   @override
-  _MetronomeWidgetState createState() => _MetronomeWidgetState();
+  MetronomeWidgetState createState() => MetronomeWidgetState();
 }
 
-class _MetronomeWidgetState extends State<MetronomeWidget> {
+class MetronomeWidgetState extends State<MetronomeWidget> {
   double _bpm = 60.0;
   Timer? _timer;
   final player = AudioPlayer();
@@ -49,6 +57,12 @@ class _MetronomeWidgetState extends State<MetronomeWidget> {
         });
       }
     });
+  }
+
+  void stopMetronomeExternally() {
+    if (_isPlaying) {
+      _stopMetronome();
+    }
   }
 
   @override
