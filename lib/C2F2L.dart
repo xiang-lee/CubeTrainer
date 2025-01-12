@@ -39,11 +39,23 @@ class _C2F2LWidgetState extends State<C2F2LWidget> {
 
   String getRandomScramble(int level) {
     final random = Random();
+    List<String> moveNames = ["R", "R2", "R'", "F", "F2", "F'", "L", "L2", "L'", "B", "B2", "B'", "U", "U2", "U'", "D", "D2", "D'"];
+    List<String> moveNamesWCA = ["R", "R2", "R'", "B", "B2", "B'", "L", "L2", "L'", "F", "F2", "F'", "D", "D2", "D'", "U", "U2", "U'"];
+    String textScramble = '';
+    String textScrambleWithSpaces = '';
     if (scrambles.isNotEmpty && scrambles[level].isNotEmpty) {
       int randomIndex = random.nextInt(scrambles[level].length);
-      return scrambles[level][randomIndex]; 
+      String randomScramble = scrambles[level][randomIndex]; 
+      for (int i = 0; i < randomScramble.length; i++) {
+          int moveIndex = randomScramble.codeUnitAt(i) - 'A'.codeUnitAt(0);
+          textScramble += moveNames[moveIndex];
+          if (i > 0) {
+              textScrambleWithSpaces += " ";
+          }
+          textScrambleWithSpaces += moveNamesWCA[moveIndex];
+      }
     }
-    return ''; 
+    return textScrambleWithSpaces; 
   }
 
   @override
