@@ -67,9 +67,12 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            C2F2LWidget(),
-            Divider(height: 40, thickness: 2),
-            MetronomeWidget(),
+           Padding(
+              padding: const EdgeInsets.only(top: 40.0), // 调整 C2F2LWidget 顶部边距
+              child: C2F2LWidget(),
+            ),
+            SizedBox(height: 80), // 增加 C2F2LWidget 和 MetronomeWidget 之间的距离
+            MetronomeWidget(key: _metronomeKey), // 确保传递 GlobalKey
           ],
         ),
       ),

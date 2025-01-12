@@ -11,14 +11,14 @@ class _C2F2LWidgetState extends State<C2F2LWidget> {
   int _selectedLevel = 0;
   List<List<String>> scrambles = [];
   List<String> levels = [
-    'Level 1 - Cross requires 1 move to solve',
-    'Level 2 - Cross requires 2 move to solve',
-    'Level 3 - Cross requires 3 move to solve',
-    'Level 4 - Cross requires 4 move to solve',
-    'Level 5 - Cross requires 5 move to solve',
-    'Level 6 - Cross requires 6 move to solve',
-    'Level 7 - Cross requires 7 move to solve',
-    'Level 8 - Cross requires 8 move to solve',
+    'Level 1 - 1 move to solve Cross',
+    'Level 2 - 2 move to solve Cross',
+    'Level 3 - 3 move to solve Cross',
+    'Level 4 - 4 move to solve Cross',
+    'Level 5 - 5 move to solve Cross',
+    'Level 6 - 6 move to solve Cross',
+    'Level 7 - 7 move to solve Cross',
+    'Level 8 - 8 move to solve Cross',
   ];
   String _scrambleResult = '';
 
