@@ -3,13 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 class MetronomeWidget extends StatefulWidget {
-  final GlobalKey<MetronomeWidgetState> key;
-
-  MetronomeWidget({required this.key}) : super(key: key);
-
-  void stopMetronomeExternally() {
-    key.currentState?.stopMetronomeExternally();
-  }
+  MetronomeWidget({Key? key}) : super(key: key);
 
   @override
   MetronomeWidgetState createState() => MetronomeWidgetState();

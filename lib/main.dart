@@ -64,21 +64,14 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Cube Trainer', style: TextStyle(fontSize: 28)),
       ),
-      body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.music_note),
-            label: 'Metronome',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.extension),
-            label: 'C2F2L',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.deepPurple,
-        onTap: _onItemTapped,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            C2F2LWidget(),
+            Divider(height: 40, thickness: 2),
+            MetronomeWidget(),
+          ],
+        ),
       ),
     );
   }
