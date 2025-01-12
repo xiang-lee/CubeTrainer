@@ -13,13 +13,13 @@ class _C2F2LWidgetState extends State<C2F2LWidget> {
   List<List<String>> scrambles = [];
   List<String> levels = [
     'Level 1 - 1 move to solve Cross',
-    'Level 2 - 2 move to solve Cross',
-    'Level 3 - 3 move to solve Cross',
-    'Level 4 - 4 move to solve Cross',
-    'Level 5 - 5 move to solve Cross',
-    'Level 6 - 6 move to solve Cross',
-    'Level 7 - 7 move to solve Cross',
-    'Level 8 - 8 move to solve Cross',
+    'Level 2 - 2 moves to solve Cross',
+    'Level 3 - 3 moves to solve Cross',
+    'Level 4 - 4 moves to solve Cross',
+    'Level 5 - 5 moves to solve Cross',
+    'Level 6 - 6 moves to solve Cross',
+    'Level 7 - 7 moves to solve Cross',
+    'Level 8 - 8 moves to solve Cross',
   ];
   String _scrambleResult = '';
 
@@ -63,27 +63,35 @@ class _C2F2LWidgetState extends State<C2F2LWidget> {
             });
           },
         ),
+        SizedBox(height: 20), // 增加按钮与文本之间的间距
+        // 使用条件渲染，只有在有 scramble 时才显示 Container
+        if (_scrambleResult.isNotEmpty) 
+          Container(
+            padding: EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: Colors.lightBlueAccent, // 设置背景颜色
+              borderRadius: BorderRadius.circular(8), // 设置圆角
+            ),
+            child: Text(
+              _scrambleResult,
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white, // 设置文本颜色
+              ),
+            ),
+          ),
+        SizedBox(height: 20), // 增加文本与按钮之间的间距
         ElevatedButton(
           onPressed: () {
             // Fetch and display scramble
-            String scramble = getRandomScramble(_selectedLevel); // Example: get the first scramble
-            showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                title: Text('Scramble'),
-                content: Text(scramble),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: Text('OK'),
-                  ),
-                ],
-              ),
-            );
+            setState(() {
+              _scrambleResult = getRandomScramble(_selectedLevel); // 获取随机 scramble
+            });
           },
           child: Text('Get Scramble'),
         ),
       ],
     );
   }
+
 } 

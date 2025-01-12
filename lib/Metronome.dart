@@ -114,7 +114,6 @@ class MetronomeWidgetState extends State<MetronomeWidget> {
           ),
           ElevatedButton(
             onPressed: () {
-              print('Metronome Start/Stop button pressed');
               _toggleMetronome();
             },
             style: ElevatedButton.styleFrom(
