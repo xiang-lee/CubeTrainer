@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 void main() {
   runApp(const MyApp());
@@ -59,7 +60,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   double _bpm = 60.0;
   Timer? _timer;
-  final player = SystemSound.play;
+  final player = AudioPlayer();
+  final cache = AudioCache(prefix: 'assets/sounds/');
   bool _isPlaying = false;
 
   void _toggleMetronome() {
@@ -73,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _startMetronome() {
     _timer?.cancel();
     _timer = Timer.periodic(Duration(milliseconds: (60000 / _bpm).round()), (timer) {
-      player(SystemSoundType.click);
+      cache.play('metronome_click.mp3');
     });
     setState(() {
       _isPlaying = true;
@@ -93,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
       if (_isPlaying) {
         _timer?.cancel();
         _timer = Timer.periodic(Duration(milliseconds: (60000 / _bpm).round()), (timer) {
-          player(SystemSoundType.click);
+          cache.play('metronome_click.mp3');
         });
       }
     });
