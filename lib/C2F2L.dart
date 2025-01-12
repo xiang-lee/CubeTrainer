@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class C2F2LWidget extends StatefulWidget {
   @override
@@ -36,9 +37,17 @@ class _C2F2LWidgetState extends State<C2F2LWidget> {
     });
   }
 
+  String getRandomScramble(int level) {
+    final random = Random();
+    if (scrambles.isNotEmpty && scrambles[level].isNotEmpty) {
+      int randomIndex = random.nextInt(scrambles[level].length);
+      return scrambles[level][randomIndex]; 
+    }
+    return ''; 
+  }
+
   @override
   Widget build(BuildContext context) {
-    print('Building C2F2LWidget'); // Debug print
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -56,10 +65,8 @@ class _C2F2LWidgetState extends State<C2F2LWidget> {
         ),
         ElevatedButton(
           onPressed: () {
-            print('Get Scramble button pressed'); // Debug print
-            print('Current selected level: \$_selectedLevel');
             // Fetch and display scramble
-            String scramble = scrambles[_selectedLevel][0]; // Example: get the first scramble
+            String scramble = getRandomScramble(_selectedLevel); // Example: get the first scramble
             showDialog(
               context: context,
               builder: (context) => AlertDialog(

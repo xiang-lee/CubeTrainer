@@ -46,10 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _onItemTapped(int index) {
-    print('BottomNavigationBar tapped: index = $index'); // Debug print
     if (_selectedIndex != index) { // 只在选项变化时执行
       if (index != 0) { // Switching away from Metronome
-        print('Switching away from Metronome'); // Debug print
         _metronomeKey.currentState?.stopMetronomeExternally();
       }
       setState(() {
