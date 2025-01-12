@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cube Trainer'),
+        title: Text('Cube Trainer', style: TextStyle(fontSize: 28)),
       ),
       body: Center(
         child: Column(
@@ -112,16 +112,36 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                ElevatedButton(
+                  onPressed: () => _adjustSpeed(40),
+                  child: Text('40', style: TextStyle(fontSize: 20)),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: () => _adjustSpeed(70),
+                  child: Text('70', style: TextStyle(fontSize: 20)),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: () => _adjustSpeed(100),
+                  child: Text('100', style: TextStyle(fontSize: 20)),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.remove),
+                  icon: Icon(Icons.remove, size: 30),
                   onPressed: () {
                     _adjustSpeed(_bpm > 0 ? _bpm - 1 : 0);
                   },
                 ),
                 Text('Speed: ${_bpm.toStringAsFixed(0)}',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
                 IconButton(
-                  icon: Icon(Icons.add),
+                  icon: Icon(Icons.add, size: 30),
                   onPressed: () {
                     _adjustSpeed(_bpm < 200 ? _bpm + 1 : 200);
                   },
@@ -140,10 +160,10 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: _toggleMetronome,
               style: ElevatedButton.styleFrom(
                 backgroundColor: _isPlaying ? Colors.red : Colors.green,
-                minimumSize: Size(150, 60),
+                minimumSize: Size(180, 70),
               ),
               child: Text(_isPlaying ? 'Stop' : 'Start',
-                  style: TextStyle(fontSize: 20)),
+                  style: TextStyle(fontSize: 24)),
             ),
           ],
         ),
