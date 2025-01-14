@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/services.dart';
 
 class MetronomeWidget extends StatefulWidget {
   MetronomeWidget({Key? key}) : super(key: key);
@@ -32,6 +33,7 @@ class MetronomeWidgetState extends State<MetronomeWidget> {
     setState(() {
       _isPlaying = true;
     });
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky); // 防止锁屏
   }
 
   void _stopMetronome() {
@@ -39,6 +41,7 @@ class MetronomeWidgetState extends State<MetronomeWidget> {
     setState(() {
       _isPlaying = false;
     });
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge); // 允许锁屏
   }
 
   void _adjustSpeed(double value) {
@@ -127,4 +130,4 @@ class MetronomeWidgetState extends State<MetronomeWidget> {
       ),
     );
   }
-} 
+}
